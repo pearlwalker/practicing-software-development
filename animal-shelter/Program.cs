@@ -37,6 +37,14 @@ namespace animal_shelter
         //Making an empty dictionary wiht the name as the key to the Pet object
         Dictionary<string, object> animalList = new Dictionary<string, object>();
 
+        void add(string name, Pet pet) {
+            animalList.Add(name, pet);
+        
+        }
+
+        void remove(string name) { 
+            animalList.Remove(name);
+        }
 
 
 
