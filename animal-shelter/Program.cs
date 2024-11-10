@@ -19,7 +19,13 @@ namespace animal_shelter
             public string breed;
 
             //Pet constructor
-           
+            //Added in the pet constructor - Jin 
+            public Pet(int age, string name, string breed)
+            {
+                this.age = age;
+                this.name = name;
+                this.breed = breed;
+            }
 
         }
 
