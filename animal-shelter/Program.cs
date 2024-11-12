@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 
 namespace animal_shelter
@@ -44,20 +45,40 @@ namespace animal_shelter
         Dictionary<string, object> animalList = new Dictionary<string, object>();
 
         void add(string name, int age, string breed) {
-            Pet newAnimal = new Pet(age, name, breed);
-            animalList.Add(name, newAnimal);
-        
+            //error handling
+            try
+            {
+                Pet newAnimal = new Pet(age, name, breed);
+                animalList.Add(name, newAnimal);
+                Console.WriteLine($"Successfully added pet: {name}");
+            } catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Error: Pet with name '{name}' already exists. {ex.Message}");
+            }
         }
 
-        void remove(string name) { 
-            animalList.Remove(name);
+        void remove(string name) {
+            //error handling
+            if (animalList.ContainsKey(name))
+            {
+                animalList.Remove(name);
+                Console.WriteLine($"Successfully removed pet: {name}");
+            } 
+            else
+            {
+                Console.WriteLine($"Error: Pet with '{name}' not found.");
+
+            }
         }
 
 
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("Welcome to the Animal Shelter!");
+
+           
         }
+
     }
 }
